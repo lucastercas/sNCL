@@ -1,0 +1,39 @@
+port pBody1 mainImage
+port pBody2 buttonDisappear
+
+media mainImage
+   src: medias/image1.jpg
+   visible: true
+   height: 90%
+end
+
+region rgButton
+   width: 10% height: 10%
+   bottom: 0px right: 45%
+end
+
+macro makeButton(mName, source)
+   media mName
+      src: source
+      rg: rgButton
+      focusIndex: 1
+      focusBorderWidth: 3
+      zIndex: 100
+   end
+end
+
+makeButton("buttonDisappear", "medias/button-red.png")
+makeButton("buttonAppear", "medias/button-green.png")
+
+macro makeLink(bt1, bt2, color, value)
+   onSelection bt1.color do
+      set mainImage.visible
+         value: value
+      end
+      stop bt1 end
+      start bt2 end
+   end
+end
+
+makeLink("buttonDisappear", "buttonAppear", "ENTER", "false")
+makeLink("buttonAppear", "buttonDisappear", "ENTER", "true")
