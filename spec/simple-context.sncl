@@ -1,7 +1,0 @@
-context context1
-   top: 25%
-   bottom: 25%
-   media media1
-      type: "text/html"
-   end
-end
